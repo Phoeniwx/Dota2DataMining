@@ -56,25 +56,30 @@ def judge(clf, test_x, test_y):
     plt.ylabel('True Positive Rate')
     plt.title('Receiver operating characteristic Curve')
     plt.legend(loc="lower right")
+
     plt.show()
 
 
 # SVM
-def svm(train_x, train_y, test_x, test_y):
+def svm_(train_x, train_y, test_x, test_y):
+    print('----SVM----')
     start = time.time()
     clf = SVC(C=0.25)
     clf.fit(train_x, train_y)
     print("Train time: %s" % (time.time() - start))
-    judge(clf, test_x, test_y)
+    dump(clf, 'SVM.model')
+    # judge(clf, test_x, test_y)
 
 
 # Linear SVM
 def linear_svm(train_x, train_y, test_x, test_y):
+    print('----linear_SVM----')
     start = time.time()
     clf = SVC(kernel='linear', C=0.1, gamma=0.001)
     clf.fit(train_x, train_y)
     print("Train time: %s" % (time.time() - start))
-    judge(clf, test_x, test_y)
+    dump(clf, 'linearSVM.model')
+    # judge(clf, test_x, test_y)
 
 
 # 逻辑回归
@@ -90,35 +95,43 @@ def logic_reg(train_x, train_y, test_x, test_y):
 
 # 朴素贝叶斯
 def naive_bay(train_x, train_y, test_x, test_y):
+    print('----Bayes----')
     start = time.time()
     clf = GaussianNB()
     clf.fit(train_x, train_y)
     print("Train time: %s" % (time.time() - start))
-    judge(clf, test_x, test_y)
+    dump(clf, 'GaussianNB.model')
+    # judge(clf, test_x, test_y)
 
 
 # KNN
 def knn(train_x, train_y, test_x, test_y):
+    print('----KNN----')
     start = time.time()
     clf = KNeighborsClassifier()
     clf.fit(train_x, train_y)
     print("Train time: %s" % (time.time() - start))
-    judge(clf, test_x, test_y)
+    dump(clf, 'KNN.model')
+    # judge(clf, test_x, test_y)
 
 
 # 决策树
 def decision_tree(train_x, train_y, test_x, test_y):
+    print('----Decision Tree----')
     start = time.time()
     clf = DecisionTreeClassifier()
     clf.fit(train_x, train_y)
     print("Train time: %s" % (time.time() - start))
-    judge(clf, test_x, test_y)
+    dump(clf, 'decision_tree.model')
+    # judge(clf, test_x, test_y)
 
 
 # 随机森林
 def random_forest(train_x, train_y, test_x, test_y):
+    print('----Random Forest----')
     start = time.time()
     clf = RandomForestClassifier()
     clf.fit(train_x, train_y)
     print("Train time: %s" % (time.time() - start))
-    judge(clf, test_x, test_y)
+    dump(clf, 'random_forest.model')
+    # judge(clf, test_x, test_y)
